@@ -3,17 +3,17 @@ class Triangle extends Shape {
     private final double b;
     private final double c;
 
-    public Triangle(double var1, double var3, double var5) {
-        this.a = var1;
-        this.b = var3;
-        this.c = var5;
+    public Triangle(double a, double b, double c) {
+        this.a = a;
+        this.b = b;
+        this.c = c;
     }
 
-    public Triangle(double var1, double var3, double var5, Color var7) {
-        this.a = var1;
-        this.b = var3;
-        this.c = var5;
-        this.color = var7;
+    public Triangle(double a, double b, double c, Color color) {
+        super(color);
+        this.a = a;
+        this.b = b;
+        this.c = c;
     }
 
     public double getPerimeter() {
@@ -23,5 +23,14 @@ class Triangle extends Shape {
     public double getArea() {
         double var1 = this.getPerimeter() / 2.0;
         return Math.sqrt(var1 * (var1 - this.a) * (var1 - this.b) * (var1 - this.c));
+    }
+    public double getA() {
+        return this.a;
+    }
+    public double getB() {
+        return this.b;
+    }
+    public double getC() {
+        return this.c;
     }
 }

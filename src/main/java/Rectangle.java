@@ -2,15 +2,15 @@ class Rectangle extends Shape {
     private final double width;
     private final double height;
 
-    public Rectangle(double var1, double var3) {
-        this.width = var1;
-        this.height = var3;
+    public Rectangle(double width, double height) {
+        this.width = width;
+        this.height = height;
     }
 
-    public Rectangle(double var1, double var3, Color var5) {
-        this.width = var1;
-        this.height = var3;
-        this.color = var5;
+    public Rectangle(double width, double height, Color color) {
+        super(color);
+        this.width = width;
+        this.height = height;
     }
 
     public double getPerimeter() {
@@ -19,5 +19,12 @@ class Rectangle extends Shape {
 
     public double getArea() {
         return this.width * this.height;
+    }
+
+    public double getWidth() {
+        return this.width;
+    }
+    public double getHeight() {
+        return this.height;
     }
 }
