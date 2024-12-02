@@ -1,4 +1,4 @@
-abstract class Shape {
+abstract public class Shape {
     public Color color;
     Shape(Color color) {
         this.color = color;
