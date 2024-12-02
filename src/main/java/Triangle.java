@@ -1,4 +1,12 @@
+import javax.persistence.*;
+
+@Entity
+@Table(name="triangles")
 class Triangle extends Shape {
+    @Id
+    @GeneratedValue
+    public Integer id;
+
     private final double a;
     private final double b;
     private final double c;

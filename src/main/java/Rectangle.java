@@ -1,4 +1,12 @@
+import javax.persistence.*;
+
+@Entity
+@Table(name="rectangles")
 class Rectangle extends Shape {
+    @Id
+    @GeneratedValue
+    public Integer id;
+
     private final double width;
     private final double height;
 
