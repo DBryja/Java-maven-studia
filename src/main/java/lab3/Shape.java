@@ -1,4 +1,16 @@
+package lab3;
+
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
+
+@MappedSuperclass
 abstract public class Shape {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Integer id;
+
     public Color color;
     Shape(Color color) {
         this.color = color;

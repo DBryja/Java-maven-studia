@@ -1,23 +1,19 @@
+package lab4;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
 public class ShapeDAO {
-    private static final SessionFactory sessionFactory;
+    private final SessionFactory sessionFactory;
     private static final Logger logger = LoggerFactory.getLogger(ShapeDAO.class);
 
-    static {
-        try {
-            sessionFactory = new Configuration().configure().buildSessionFactory();
-        } catch (Throwable ex) {
-            logger.error("Initial SessionFactory creation failed.", ex);
-            throw new ExceptionInInitializerError(ex);
-        }
+    public ShapeDAO(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
     }
 
     private Session openSessionWithLogging() {
@@ -33,10 +29,10 @@ public class ShapeDAO {
             session.persist(shape);
             transaction.commit();
         } catch (Exception e) {
+            logger.error("Error saving shape", e);
             if (transaction != null) {
                 transaction.rollback();
             }
-            logger.error("Error saving shape", e);
         }
     }
 
@@ -49,9 +45,9 @@ public class ShapeDAO {
         }
     }
 
-    public List<Shape> getAllShapes(Class<? extends Shape> shapeClass) {
+    public <T extends Shape> List<T> getAllShapes(Class<T> shapeClass) {
         try (Session session = openSessionWithLogging()) {
-            return (List<Shape>) session.createQuery("from " + shapeClass.getName(), shapeClass).list();
+            return session.createQuery("from " + shapeClass.getName(), shapeClass).list();
         } catch (Exception e) {
             logger.error("Error getting all shapes", e);
             return null;
@@ -65,10 +61,10 @@ public class ShapeDAO {
             session.merge(shape);
             transaction.commit();
         } catch (Exception e) {
+            logger.error("Error updating shape", e);
             if (transaction != null) {
                 transaction.rollback();
             }
-            logger.error("Error updating shape", e);
         }
     }
 
@@ -79,10 +75,15 @@ public class ShapeDAO {
             session.remove(shape);
             transaction.commit();
         } catch (Exception e) {
+            logger.error("Error deleting shape", e);
             if (transaction != null) {
                 transaction.rollback();
             }
-            logger.error("Error deleting shape", e);
         }
+    }
+
+    public void close() {
+        if (sessionFactory != null)
+            sessionFactory.close();
     }
 }

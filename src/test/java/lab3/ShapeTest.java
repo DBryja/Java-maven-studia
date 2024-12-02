@@ -1,5 +1,7 @@
+package lab3;
+
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 class ShapeTest {
     @Test
@@ -13,7 +15,7 @@ class ShapeTest {
                 return 0;
             }
         };
-        assertEquals(new Color(255, 255, 255, 0), shape.color);
+        Assertions.assertEquals(new Color(255, 255, 255, 0), shape.color);
     }
 
     @Test
@@ -27,7 +29,7 @@ class ShapeTest {
                 return 0;
             }
         };
-        assertEquals(new Color(0, 0, 0), shape.color);
+        Assertions.assertEquals(new Color(0, 0, 0), shape.color);
     }
 
     @Test
@@ -41,7 +43,7 @@ class ShapeTest {
                 return 0;
             }
         };
-        assertDoesNotThrow(shape::print);
+        Assertions.assertDoesNotThrow(shape::print);
     }
 
     @Test
@@ -55,6 +57,6 @@ class ShapeTest {
                 return 0;
             }
         };
-        assertDoesNotThrow(shape::getColorDescription);
+        Assertions.assertDoesNotThrow(shape::getColorDescription);
     }
 }

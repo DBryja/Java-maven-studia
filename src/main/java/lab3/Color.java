@@ -1,3 +1,8 @@
+package lab3;
+
+import jakarta.persistence.Embeddable;
+
+@Embeddable
 public record Color(int red, int green, int blue, float alpha) {
     public Color {
         if (red < 0 || green < 0 || blue < 0){

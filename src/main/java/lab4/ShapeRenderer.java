@@ -1,3 +1,5 @@
+package lab4;
+
 public class ShapeRenderer {
     public static void render(Shape shape) {
         System.out.println(getColorCode(shape.color));

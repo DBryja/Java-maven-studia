@@ -1,14 +1,15 @@
-import javax.persistence.*;
+package lab4;
+
+import jakarta.persistence.*;
 
 @Entity
 @Table(name="rectangles")
-class Rectangle extends Shape {
-    @Id
-    @GeneratedValue
-    public Integer id;
+public class Rectangle extends Shape {
+    private double width;
+    private double height;
 
-    private final double width;
-    private final double height;
+    public Rectangle(){}
+
 
     public Rectangle(double width, double height) {
         this.width = width;
@@ -19,6 +20,10 @@ class Rectangle extends Shape {
         super(color);
         this.width = width;
         this.height = height;
+    }
+
+    public void print() {
+        System.out.println("Rectangle: width = " + this.width + ", height = " + this.height + this.color.toString());
     }
 
     public double getPerimeter() {

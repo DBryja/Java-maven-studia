@@ -1,3 +1,5 @@
+package lab3;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -8,8 +10,8 @@ class ShapeDescriber {
     }
 
     public static void describe(Shape shape) {
-        logger.info("Shape: {}", shape.getClass().getSimpleName());
-        logger.info("Color: {}", shape.color.toString());
+        logger.info("lab4.Shape: {}", shape.getClass().getSimpleName());
+        logger.info("lab4.Color: {}", shape.color.toString());
         logger.info("Area: {}", shape.getArea());
         logger.info("Perimeter: {}", shape.getPerimeter());
     }
