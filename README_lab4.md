@@ -1,4 +1,4 @@
-# Lab4 Java Maven
+# Lab4 Hibernate
 
 ## Wykonanie maina
 ```
