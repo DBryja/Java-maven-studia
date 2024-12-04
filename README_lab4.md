@@ -100,7 +100,7 @@ drop table if exists rectangles cascade
 ```
 
 ## Testy
-![test rezultat](lab4-test-result.png)
+![test rezultat](screenshots/lab4-test-result.png)
 ```
 Hibernate: 
     drop table if exists rectangles cascade
